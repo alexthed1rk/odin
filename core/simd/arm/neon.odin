@@ -3076,6 +3076,558 @@ vsliq_n_u64 :: #force_inline proc "c" (a, b: uint64x2_t, $N: int32_t) -> uint64x
 	}
 }
 
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_s8)
+@(require_results, enable_target_feature = "neon")
+vshr_n_s8 :: #force_inline proc "c" (v: int8x8_t, $N: int32_t) -> int8x8_t where 1 <= N, N <= 8 {
+	when N == 8 { M :: 7 } else { M :: N }
+	return simd.shr(v, uint8x8_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_u8)
+@(require_results, enable_target_feature = "neon")
+vshr_n_u8 :: #force_inline proc "c" (v: uint8x8_t, $N: int32_t) -> uint8x8_t where 1 <= N, N <= 8 {
+	when N == 8 {
+		return uint8x8_t(0)
+	} else {
+		return simd.shr(v, uint8x8_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_s16)
+@(require_results, enable_target_feature = "neon")
+vshr_n_s16 :: #force_inline proc "c" (v: int16x4_t, $N: int32_t) -> int16x4_t where 1 <= N, N <= 16 {
+	when N == 16 { M :: 15 } else { M :: N }
+	return simd.shr(v, uint16x4_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_u16)
+@(require_results, enable_target_feature = "neon")
+vshr_n_u16 :: #force_inline proc "c" (v: uint16x4_t, $N: int32_t) -> uint16x4_t where 1 <= N, N <= 16 {
+	when N == 16 {
+		return uint16x4_t(0)
+	} else {
+		return simd.shr(v, uint16x4_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_s32)
+@(require_results, enable_target_feature = "neon")
+vshr_n_s32 :: #force_inline proc "c" (v: int32x2_t, $N: int32_t) -> int32x2_t where 1 <= N, N <= 32 {
+	when N == 32 { M :: 31 } else { M :: N }
+	return simd.shr(v, uint32x2_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_u32)
+@(require_results, enable_target_feature = "neon")
+vshr_n_u32 :: #force_inline proc "c" (v: uint32x2_t, $N: int32_t) -> uint32x2_t where 1 <= N, N <= 32 {
+	when N == 32 {
+		return uint32x2_t(0)
+	} else {
+		return simd.shr(v, uint32x2_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_s64)
+@(require_results, enable_target_feature = "neon")
+vshr_n_s64 :: #force_inline proc "c" (v: int64x1_t, $N: int32_t) -> int64x1_t where 1 <= N, N <= 64 {
+	when N == 64 { M :: 63 } else { M :: N }
+	return simd.shr(v, uint64x1_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshr_n_u64)
+@(require_results, enable_target_feature = "neon")
+vshr_n_u64 :: #force_inline proc "c" (v: uint64x1_t, $N: int32_t) -> uint64x1_t where 1 <= N, N <= 64 {
+	when N == 64 {
+		return uint64x1_t(0)
+	} else {
+		return simd.shr(v, uint64x1_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_s8)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_s8 :: #force_inline proc "c" (v: int8x16_t, $N: int32_t) -> int8x16_t where 1 <= N, N <= 8 {
+	when N == 8 { M :: 7 } else { M :: N }
+	return simd.shr(v, uint8x16_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_u8)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_u8 :: #force_inline proc "c" (v: uint8x16_t, $N: int32_t) -> uint8x16_t where 1 <= N, N <= 8 {
+	when N == 8 {
+		return uint8x16_t(0)
+	} else {
+		return simd.shr(v, uint8x16_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_s16)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_s16 :: #force_inline proc "c" (v: int16x8_t, $N: int32_t) -> int16x8_t where 1 <= N, N <= 16 {
+	when N == 16 { M :: 15 } else { M :: N }
+	return simd.shr(v, uint16x8_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_u16)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_u16 :: #force_inline proc "c" (v: uint16x8_t, $N: int32_t) -> uint16x8_t where 1 <= N, N <= 16 {
+	when N == 16 {
+		return uint16x8_t(0)
+	} else {
+		return simd.shr(v, uint16x8_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_s32)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_s32 :: #force_inline proc "c" (v: int32x4_t, $N: int32_t) -> int32x4_t where 1 <= N, N <= 32 {
+	when N == 32 { M :: 31 } else { M :: N }
+	return simd.shr(v, uint32x4_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_u32)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_u32 :: #force_inline proc "c" (v: uint32x4_t, $N: int32_t) -> uint32x4_t where 1 <= N, N <= 32 {
+	when N == 32 {
+		return uint32x4_t(0)
+	} else {
+		return simd.shr(v, uint32x4_t(N))
+	}
+}
+
+// Signed Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_s64)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_s64 :: #force_inline proc "c" (v: int64x2_t, $N: int32_t) -> int64x2_t where 1 <= N, N <= 64 {
+	when N == 64 { M :: 63 } else { M :: N }
+	return simd.shr(v, uint64x2_t(M))
+}
+
+// Unsigned Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrq_n_u64)
+@(require_results, enable_target_feature = "neon")
+vshrq_n_u64 :: #force_inline proc "c" (v: uint64x2_t, $N: int32_t) -> uint64x2_t where 1 <= N, N <= 64 {
+	when N == 64 {
+		return uint64x2_t(0)
+	} else {
+		return simd.shr(v, uint64x2_t(N))
+	}
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_s8)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_s8 :: #force_inline proc "c" (v: int8x8_t, $N: int32_t) -> int8x8_t where 1 <= N, N <= 8 {
+	return vrshl_s8(v, int8x8_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_u8)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_u8 :: #force_inline proc "c" (v: uint8x8_t, $N: int32_t) -> uint8x8_t where 1 <= N, N <= 8 {
+	return vrshl_u8(v, int8x8_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_s16)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_s16 :: #force_inline proc "c" (v: int16x4_t, $N: int32_t) -> int16x4_t where 1 <= N, N <= 16 {
+	return vrshl_s16(v, int16x4_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_u16)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_u16 :: #force_inline proc "c" (v: uint16x4_t, $N: int32_t) -> uint16x4_t where 1 <= N, N <= 16 {
+	return vrshl_u16(v, int16x4_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_s32)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_s32 :: #force_inline proc "c" (v: int32x2_t, $N: int32_t) -> int32x2_t where 1 <= N, N <= 32 {
+	return vrshl_s32(v, int32x2_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_u32)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_u32 :: #force_inline proc "c" (v: uint32x2_t, $N: int32_t) -> uint32x2_t where 1 <= N, N <= 32 {
+	return vrshl_u32(v, int32x2_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_s64)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_s64 :: #force_inline proc "c" (v: int64x1_t, $N: int32_t) -> int64x1_t where 1 <= N, N <= 64 {
+	return vrshl_s64(v, int64x1_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshr_n_u64)
+@(require_results, enable_target_feature = "neon")
+vrshr_n_u64 :: #force_inline proc "c" (v: uint64x1_t, $N: int32_t) -> uint64x1_t where 1 <= N, N <= 64 {
+	return vrshl_u64(v, int64x1_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_s8)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_s8 :: #force_inline proc "c" (v: int8x16_t, $N: int32_t) -> int8x16_t where 1 <= N, N <= 8 {
+	return vrshlq_s8(v, int8x16_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_u8)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_u8 :: #force_inline proc "c" (v: uint8x16_t, $N: int32_t) -> uint8x16_t where 1 <= N, N <= 8 {
+	return vrshlq_u8(v, int8x16_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_s16)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_s16 :: #force_inline proc "c" (v: int16x8_t, $N: int32_t) -> int16x8_t where 1 <= N, N <= 16 {
+	return vrshlq_s16(v, int16x8_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_u16)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_u16 :: #force_inline proc "c" (v: uint16x8_t, $N: int32_t) -> uint16x8_t where 1 <= N, N <= 16 {
+	return vrshlq_u16(v, int16x8_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_s32)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_s32 :: #force_inline proc "c" (v: int32x4_t, $N: int32_t) -> int32x4_t where 1 <= N, N <= 32 {
+	return vrshlq_s32(v, int32x4_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_u32)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_u32 :: #force_inline proc "c" (v: uint32x4_t, $N: int32_t) -> uint32x4_t where 1 <= N, N <= 32 {
+	return vrshlq_u32(v, int32x4_t(-N))
+}
+
+// Signed Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_s64)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_s64 :: #force_inline proc "c" (v: int64x2_t, $N: int32_t) -> int64x2_t where 1 <= N, N <= 64 {
+	return vrshlq_s64(v, int64x2_t(-N))
+}
+
+// Unsigned Rounding Shift Right.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrq_n_u64)
+@(require_results, enable_target_feature = "neon")
+vrshrq_n_u64 :: #force_inline proc "c" (v: uint64x2_t, $N: int32_t) -> uint64x2_t where 1 <= N, N <= 64 {
+	return vrshlq_u64(v, int64x2_t(-N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_s8)
+@(require_results, enable_target_feature = "neon")
+vsra_n_s8 :: #force_inline proc "c" (a, b: int8x8_t, $N: int32_t) -> int8x8_t where 1 <= N, N <= 8 {
+	return simd.add(a, vshr_n_s8(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_u8)
+@(require_results, enable_target_feature = "neon")
+vsra_n_u8 :: #force_inline proc "c" (a, b: uint8x8_t, $N: int32_t) -> uint8x8_t where 1 <= N, N <= 8 {
+	return simd.add(a, vshr_n_u8(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_s16)
+@(require_results, enable_target_feature = "neon")
+vsra_n_s16 :: #force_inline proc "c" (a, b: int16x4_t, $N: int32_t) -> int16x4_t where 1 <= N, N <= 16 {
+	return simd.add(a, vshr_n_s16(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_u16)
+@(require_results, enable_target_feature = "neon")
+vsra_n_u16 :: #force_inline proc "c" (a, b: uint16x4_t, $N: int32_t) -> uint16x4_t where 1 <= N, N <= 16 {
+	return simd.add(a, vshr_n_u16(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_s32)
+@(require_results, enable_target_feature = "neon")
+vsra_n_s32 :: #force_inline proc "c" (a, b: int32x2_t, $N: int32_t) -> int32x2_t where 1 <= N, N <= 32 {
+	return simd.add(a, vshr_n_s32(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_u32)
+@(require_results, enable_target_feature = "neon")
+vsra_n_u32 :: #force_inline proc "c" (a, b: uint32x2_t, $N: int32_t) -> uint32x2_t where 1 <= N, N <= 32 {
+	return simd.add(a, vshr_n_u32(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_s64)
+@(require_results, enable_target_feature = "neon")
+vsra_n_s64 :: #force_inline proc "c" (a, b: int64x1_t, $N: int32_t) -> int64x1_t where 1 <= N, N <= 64 {
+	return simd.add(a, vshr_n_s64(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsra_n_u64)
+@(require_results, enable_target_feature = "neon")
+vsra_n_u64 :: #force_inline proc "c" (a, b: uint64x1_t, $N: int32_t) -> uint64x1_t where 1 <= N, N <= 64 {
+	return simd.add(a, vshr_n_u64(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_s8)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_s8 :: #force_inline proc "c" (a, b: int8x16_t, $N: int32_t) -> int8x16_t where 1 <= N, N <= 8 {
+	return simd.add(a, vshrq_n_s8(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_u8)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_u8 :: #force_inline proc "c" (a, b: uint8x16_t, $N: int32_t) -> uint8x16_t where 1 <= N, N <= 8 {
+	return simd.add(a, vshrq_n_u8(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_s16)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_s16 :: #force_inline proc "c" (a, b: int16x8_t, $N: int32_t) -> int16x8_t where 1 <= N, N <= 16 {
+	return simd.add(a, vshrq_n_s16(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_u16)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_u16 :: #force_inline proc "c" (a, b: uint16x8_t, $N: int32_t) -> uint16x8_t where 1 <= N, N <= 16 {
+	return simd.add(a, vshrq_n_u16(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_s32)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_s32 :: #force_inline proc "c" (a, b: int32x4_t, $N: int32_t) -> int32x4_t where 1 <= N, N <= 32 {
+	return simd.add(a, vshrq_n_s32(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_u32)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_u32 :: #force_inline proc "c" (a, b: uint32x4_t, $N: int32_t) -> uint32x4_t where 1 <= N, N <= 32 {
+	return simd.add(a, vshrq_n_u32(b, N))
+}
+
+// Signed Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_s64)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_s64 :: #force_inline proc "c" (a, b: int64x2_t, $N: int32_t) -> int64x2_t where 1 <= N, N <= 64 {
+	return simd.add(a, vshrq_n_s64(b, N))
+}
+
+// Unsigned Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsraq_n_u64)
+@(require_results, enable_target_feature = "neon")
+vsraq_n_u64 :: #force_inline proc "c" (a, b: uint64x2_t, $N: int32_t) -> uint64x2_t where 1 <= N, N <= 64 {
+	return simd.add(a, vshrq_n_u64(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_s8)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_s8 :: #force_inline proc "c" (a, b: int8x8_t, $N: int32_t) -> int8x8_t where 1 <= N, N <= 8 {
+	return simd.add(a, vrshr_n_s8(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_u8)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_u8 :: #force_inline proc "c" (a, b: uint8x8_t, $N: int32_t) -> uint8x8_t where 1 <= N, N <= 8 {
+	return simd.add(a, vrshr_n_u8(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_s16)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_s16 :: #force_inline proc "c" (a, b: int16x4_t, $N: int32_t) -> int16x4_t where 1 <= N, N <= 16 {
+	return simd.add(a, vrshr_n_s16(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_u16)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_u16 :: #force_inline proc "c" (a, b: uint16x4_t, $N: int32_t) -> uint16x4_t where 1 <= N, N <= 16 {
+	return simd.add(a, vrshr_n_u16(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_s32)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_s32 :: #force_inline proc "c" (a, b: int32x2_t, $N: int32_t) -> int32x2_t where 1 <= N, N <= 32 {
+	return simd.add(a, vrshr_n_s32(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_u32)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_u32 :: #force_inline proc "c" (a, b: uint32x2_t, $N: int32_t) -> uint32x2_t where 1 <= N, N <= 32 {
+	return simd.add(a, vrshr_n_u32(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_s64)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_s64 :: #force_inline proc "c" (a, b: int64x1_t, $N: int32_t) -> int64x1_t where 1 <= N, N <= 64 {
+	return simd.add(a, vrshr_n_s64(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsra_n_u64)
+@(require_results, enable_target_feature = "neon")
+vrsra_n_u64 :: #force_inline proc "c" (a, b: uint64x1_t, $N: int32_t) -> uint64x1_t where 1 <= N, N <= 64 {
+	return simd.add(a, vrshr_n_u64(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_s8)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_s8 :: #force_inline proc "c" (a, b: int8x16_t, $N: int32_t) -> int8x16_t where 1 <= N, N <= 8 {
+	return simd.add(a, vrshrq_n_s8(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_u8)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_u8 :: #force_inline proc "c" (a, b: uint8x16_t, $N: int32_t) -> uint8x16_t where 1 <= N, N <= 8 {
+	return simd.add(a, vrshrq_n_u8(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_s16)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_s16 :: #force_inline proc "c" (a, b: int16x8_t, $N: int32_t) -> int16x8_t where 1 <= N, N <= 16 {
+	return simd.add(a, vrshrq_n_s16(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_u16)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_u16 :: #force_inline proc "c" (a, b: uint16x8_t, $N: int32_t) -> uint16x8_t where 1 <= N, N <= 16 {
+	return simd.add(a, vrshrq_n_u16(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_s32)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_s32 :: #force_inline proc "c" (a, b: int32x4_t, $N: int32_t) -> int32x4_t where 1 <= N, N <= 32 {
+	return simd.add(a, vrshrq_n_s32(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_u32)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_u32 :: #force_inline proc "c" (a, b: uint32x4_t, $N: int32_t) -> uint32x4_t where 1 <= N, N <= 32 {
+	return simd.add(a, vrshrq_n_u32(b, N))
+}
+
+// Signed Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_s64)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_s64 :: #force_inline proc "c" (a, b: int64x2_t, $N: int32_t) -> int64x2_t where 1 <= N, N <= 64 {
+	return simd.add(a, vrshrq_n_s64(b, N))
+}
+
+// Unsigned Rounding Shift Right and Accumulate.
+//
+// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsraq_n_u64)
+@(require_results, enable_target_feature = "neon")
+vrsraq_n_u64 :: #force_inline proc "c" (a, b: uint64x2_t, $N: int32_t) -> uint64x2_t where 1 <= N, N <= 64 {
+	return simd.add(a, vrshrq_n_u64(b, N))
+}
+
 when ODIN_ARCH == .arm64 {
 	// Table Lookup.
 	//
@@ -3889,7 +4441,7 @@ when ODIN_ARCH == .arm64 {
 		return vget_lane_s64(vqneg_s64(vdup_n_s64(a)), 0)
 	}
 
-	// Shift Left.
+	// Signed Shift Left.
 	//
 	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshld_n_s64)
 	@(require_results, enable_target_feature = "neon")
@@ -3897,7 +4449,7 @@ when ODIN_ARCH == .arm64 {
 		return v << uint64_t(N)
 	}
 
-	// Shift Left.
+	// Unsigned Shift Left.
 	//
 	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshld_n_u64)
 	@(require_results, enable_target_feature = "neon")
@@ -4241,6 +4793,75 @@ when ODIN_ARCH == .arm64 {
 			transmute(uint64x1_t)b,
 			N,
 		)
+	}
+
+	// Signed Shift Right.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrd_n_s64)
+	@(require_results, enable_target_feature = "neon")
+	vshrd_n_s64 :: #force_inline proc "c" (v: int64_t, $N: int32_t) -> int64_t where 1 <= N, N <= 64 {
+		when N == 64 { M :: 63 } else { M :: N }
+		return v >> uint64_t(M)
+	}
+
+	// Unsigned Shift Right.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vshrd_n_u64)
+	@(require_results, enable_target_feature = "neon")
+	vshrd_n_u64 :: #force_inline proc "c" (v: uint64_t, $N: int32_t) -> uint64_t where 1 <= N, N <= 64 {
+		when N == 64 {
+			return uint64_t(0)
+		} else {
+			return v >> uint64_t(N)
+		}
+	}
+
+	// Signed Rounding Shift Right.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrd_n_s64)
+	@(require_results, enable_target_feature = "neon")
+	vrshrd_n_s64 :: #force_inline proc "c" (v: int64_t, $N: int32_t) -> int64_t where 1 <= N, N <= 64 {
+		return vrshld_s64(v, int64_t(-N))
+	}
+
+	// Unsigned Rounding Shift Right.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrshrd_n_u64)
+	@(require_results, enable_target_feature = "neon")
+	vrshrd_n_u64 :: #force_inline proc "c" (v: uint64_t, $N: int32_t) -> uint64_t where 1 <= N, N <= 64 {
+		return vrshld_u64(v, int64_t(-N))
+	}
+
+	// Signed Shift Right and Accumulate.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsrad_n_s64)
+	@(require_results, enable_target_feature = "neon")
+	vsrad_n_s64 :: #force_inline proc "c" (a, b: int64_t, $N: int32_t) -> int64_t where 1 <= N, N <= 64 {
+		return a + vshrd_n_s64(b, N)
+	}
+
+	// Unsigned Shift Right and Accumulate.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vsrad_n_u64)
+	@(require_results, enable_target_feature = "neon")
+	vsrad_n_u64 :: #force_inline proc "c" (a, b: uint64_t, $N: int32_t) -> uint64_t where 1 <= N, N <= 64 {
+		return a + vshrd_n_u64(b, N)
+	}
+
+	// Signed Rounding Shift Right and Accumulate.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsrad_n_s64)
+	@(require_results, enable_target_feature = "neon")
+	vrsrad_n_s64 :: #force_inline proc "c" (a, b: int64_t, $N: int32_t) -> int64_t where 1 <= N, N <= 64 {
+		return a + vrshrd_n_s64(b, N)
+	}
+
+	// Unsigned Rounding Shift Right and Accumulate.
+	//
+	// [Arm's documentation](https://developer.arm.com/architectures/instruction-sets/intrinsics/vrsrad_n_u64)
+	@(require_results, enable_target_feature = "neon")
+	vrsrad_n_u64 :: #force_inline proc "c" (a, b: uint64_t, $N: int32_t) -> uint64_t where 1 <= N, N <= 64 {
+		return a + vrshrd_n_u64(b, N)
 	}
 }
 
